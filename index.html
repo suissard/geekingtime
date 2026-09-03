@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeekingTime (GETI) - Communauté E-sport Overwatch 2</title>
+    <title>GeekingTime (GETI) - Communauté & E-sport Overwatch 2</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="Rejoignez GeekingTime (GETI), la communauté e-sport française dédiée à Overwatch 2. Tournois, entraide, coaching, PUGs et émotions fortes avec plus de 3 500 passionnés.">
+    <meta name="keywords" content="Overwatch 2, E-sport, GeekingTime, GETI, Tournois Overwatch, Discord Overwatch 2, PUGs, Scrims OW2, France">
+    <meta name="author" content="GeekingTime (GETI)">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geekingtime.fr/">
+    <meta property="og:title" content="GeekingTime (GETI) - Communauté & E-sport Overwatch 2">
+    <meta property="og:description" content="Vivre l'esport intensément. Rejoignez plus de 3 500 passionnés d'Overwatch 2 autour de tournois en ligne, entraide et progression collective.">
+    <meta property="og:image" content="asset/logo-violet.jpg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GeekingTime (GETI) - Communauté & E-sport Overwatch 2">
+    <meta name="twitter:description" content="Vivre l'esport intensément. Tournois, entraide et passion Overwatch 2.">
+    <meta name="twitter:image" content="asset/logo-violet.jpg">
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="asset/logo-transparent.png">
+    <link rel="apple-touch-icon" href="asset/logo-violet.jpg">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +33,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -22,17 +44,35 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0B0D14',
-                            card: '#131722',
-                            border: '#23293B',
-                            purple: '#8B5CF6',
+                            dark: '#07090E',
+                            card: '#0F121C',
+                            border: '#202637',
+                            owOrange: '#FF6B00',
+                            owOrangeLight: '#FF8A26',
+                            amber: '#FBB03B',
+                            purple: '#7C3AED',
+                            purpleGlow: '#9333EA',
                             neonCyan: '#06B6D4',
-                            owOrange: '#F97316',
                         }
                     },
                     fontFamily: {
                         display: ['Orbitron', 'Syne', 'sans-serif'],
                         body: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 5s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.08)' },
+                        }
                     }
                 }
             }
@@ -40,390 +80,749 @@
     </script>
 
     <style>
+        :root {
+            color-scheme: dark;
+        }
+
         body {
-            background-color: #0B0D14;
+            background-color: #07090E;
             color: #E2E8F0;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #202637;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF6B00;
         }
 
+        /* Tech Cyber Grid Background */
+        .bg-cyber-grid {
+            background-size: 48px 48px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        }
+
+        /* Ambient Glow Shadows */
         .glow-orange {
-            box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.35);
+            box-shadow: 0 0 35px -5px rgba(255, 107, 0, 0.45);
         }
 
         .glow-purple {
-            box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.45);
         }
 
-        .hover-glow:hover {
-            box-shadow: 0 0 20px 2px rgba(249, 115, 22, 0.3);
-            border-color: rgba(249, 115, 22, 0.6);
+        .glow-cyan {
+            box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.35);
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #F97316 0%, #A78BFA 100%);
+        .glass-panel {
+            background: rgba(15, 18, 28, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 0, 0.4);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 24px 2px rgba(255, 107, 0, 0.15);
+        }
+
+        /* Text Gradients */
+        .text-gradient-ow {
+            background: linear-gradient(135deg, #FF6B00 0%, #FBB03B 50%, #C084FC 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .glass-card {
-            background: rgba(19, 23, 34, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #A855F7 0%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.05); }
+        /* Button Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
         }
-        .animate-pulse-slow {
-            animation: pulse-slow 3s ease-in-out infinite;
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent,
+                rgba(255, 255, 255, 0.15),
+                transparent
+            );
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .btn-shine:hover::after {
+            opacity: 1;
+            left: 100%;
+        }
+
+
+        /* Radial Vignette */
+        .radial-vignette {
+            background: radial-gradient(circle at 50% 30%, transparent 20%, #07090E 90%);
         }
     </style>
 </head>
-<body class="bg-grid-pattern antialiased">
+<body class="bg-cyber-grid antialiased selection:bg-brand-owOrange selection:text-white">
 
-    <!-- Header / Nav -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-brand-border/60">
+    <!-- Ambient Gradient Backdrops -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-brand-owOrange/10 rounded-full blur-[140px] animate-pulse-glow"></div>
+        <div class="absolute top-[35%] -left-40 w-[600px] h-[600px] bg-brand-purple/15 rounded-full blur-[160px]"></div>
+        <div class="absolute top-[60%] -right-40 w-[600px] h-[600px] bg-brand-neonCyan/10 rounded-full blur-[160px]"></div>
+    </div>
+
+    <!-- Notification Toast (Hidden by default) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="flex items-center gap-3 px-5 py-3.5 rounded-xl glass-panel border border-brand-owOrange/40 bg-brand-card/95 text-white shadow-2xl shadow-black/80">
+            <div class="w-8 h-8 rounded-lg bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center font-bold">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-white" id="toast-title">Lien copié !</p>
+                <p class="text-[11px] text-slate-400" id="toast-message">L'invitation Discord est prête à être partagée.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-brand-dark/70 backdrop-blur-xl border-b border-brand-border/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-owOrange to-brand-purple flex items-center justify-center font-display font-black text-white text-xl shadow-lg group-hover:scale-105 transition-transform duration-300">
-                        G
+                <!-- Logo Official Transparent -->
+                <a href="#accueil" class="flex items-center gap-3.5 group cursor-pointer" title="GeekingTime - Accueil">
+                    <div class="relative w-11 h-11 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-brand-owOrange/20 rounded-xl blur-md group-hover:bg-brand-owOrange/40 transition-all"></div>
+                        <img 
+                            src="asset/logo-transparent.png" 
+                            alt="Logo GeekingTime GETI" 
+                            class="relative w-11 h-11 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)] group-hover:scale-105 transition-transform duration-300"
+                        >
                     </div>
-                    <div>
-                        <span class="font-display font-black text-xl tracking-wider text-white">GEEKING<span class="text-brand-owOrange">TIME</span></span>
-                        <span class="block text-[10px] font-semibold tracking-widest text-brand-purple -mt-1">OVERWATCH 2 ESPORT</span>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black text-xl tracking-wider text-white group-hover:text-slate-100 transition-colors">
+                            GEEKING<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-owOrange to-brand-amber">TIME</span>
+                        </span>
+                        <div class="flex items-center gap-1.5 -mt-1">
+                            <span class="text-[10px] font-bold tracking-widest text-brand-purple">GETI</span>
+                            <span class="text-[10px] text-slate-500">•</span>
+                            <span class="text-[10px] font-semibold tracking-wider text-slate-400">OVERWATCH 2 ESPORT</span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- Navigation -->
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                    <a href="#accueil" class="hover:text-brand-owOrange transition-colors">Accueil</a>
-                    <a href="#vision" class="hover:text-brand-owOrange transition-colors">Notre Vision</a>
-                    <a href="#tournois" class="hover:text-brand-owOrange transition-colors">Tournois OW2</a>
-                    <a href="#communaute" class="hover:text-brand-owOrange transition-colors">Communauté</a>
+                    <a href="#accueil" class="hover:text-brand-owOrange transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-owOrange hover:after:w-full after:transition-all">Accueil</a>
+                    <a href="#vision" class="hover:text-brand-owOrange transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-owOrange hover:after:w-full after:transition-all">Notre Vision</a>
+                    <a href="#tournois" class="hover:text-brand-owOrange transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-owOrange hover:after:w-full after:transition-all">Tournois OW2</a>
+                    <a href="#communaute" class="hover:text-brand-owOrange transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-owOrange hover:after:w-full after:transition-all">Communauté Discord</a>
                 </nav>
 
-                <!-- Discord Button -->
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="https://discord.gg" target="_blank" class="relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-white text-sm transition-all duration-300 glow-purple hover:scale-105">
+                <!-- Discord CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="copyDiscordInvite()" class="px-3 py-2 rounded-xl glass-panel text-slate-400 hover:text-white hover:border-brand-owOrange/40 text-xs font-semibold transition-all" title="Copier le lien d'invitation Discord">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                    <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-white text-sm transition-all duration-300 glow-purple hover:scale-[1.02]">
                         <i class="fa-brands fa-discord text-lg"></i>
                         <span>Rejoindre Discord</span>
-                        <span class="px-2 py-0.5 text-[11px] rounded-full bg-white/20 text-white font-mono">3.5k</span>
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] rounded-full bg-white/20 text-white font-mono font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            3.5k
+                        </span>
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
-                    <i class="fa-solid fa-bars"></i>
+                <button id="mobile-menu-btn" aria-label="Menu Mobile" class="md:hidden text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-brand-border px-4 pt-4 pb-6 space-y-4">
-            <a href="#accueil" class="block text-slate-200 hover:text-brand-owOrange text-base font-medium">Accueil</a>
-            <a href="#vision" class="block text-slate-200 hover:text-brand-owOrange text-base font-medium">Notre Vision</a>
-            <a href="#tournois" class="block text-slate-200 hover:text-brand-owOrange text-base font-medium">Tournois OW2</a>
-            <a href="#communaute" class="block text-slate-200 hover:text-brand-owOrange text-base font-medium">Communauté</a>
-            <a href="https://discord.gg" target="_blank" class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-center">
-                <i class="fa-brands fa-discord"></i> Rejoindre Discord (3.5k)
-            </a>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-brand-border/80 px-4 pt-4 pb-6 space-y-3">
+            <a href="#accueil" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/5 hover:text-brand-owOrange text-base font-medium">Accueil</a>
+            <a href="#vision" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/5 hover:text-brand-owOrange text-base font-medium">Notre Vision</a>
+            <a href="#tournois" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/5 hover:text-brand-owOrange text-base font-medium">Tournois OW2</a>
+            <a href="#communaute" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-200 hover:bg-white/5 hover:text-brand-owOrange text-base font-medium">Communauté Discord</a>
+            
+            <div class="pt-3 flex flex-col gap-2">
+                <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 text-white font-bold text-center glow-purple">
+                    <i class="fa-brands fa-discord text-lg"></i>
+                    <span>Rejoindre le Discord (3 500+ membres)</span>
+                </a>
+                <button onclick="copyDiscordInvite()" class="w-full py-2.5 rounded-xl glass-panel text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-copy text-brand-owOrange"></i> Copier l'invitation Discord
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="accueil" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-owOrange/15 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-brand-purple/15 rounded-full blur-[100px] pointer-events-none"></div>
+    <main class="relative z-10">
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
+        <!-- Hero Section -->
+        <section id="accueil" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-brand-owOrange/40 text-xs font-semibold text-brand-owOrange mb-6 uppercase tracking-wider shadow-inner">
-                    <i class="fa-solid fa-heart-pulse"></i> Passion, Émotions & Compétition
-                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content (7 cols) -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-brand-owOrange/30 text-xs font-semibold text-brand-owOrange mb-6 shadow-lg shadow-orange-950/20">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span class="tracking-wide uppercase text-[11px] font-mono">Saison Overwatch 2 • Communauté E-sport Active</span>
+                        </div>
 
-                <!-- Main Title -->
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white leading-tight mb-6">
-                    VIVRE L'ESPORT <span class="text-gradient">ENSEMBLE</span>
-                </h1>
+                        <!-- Main Title -->
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white leading-[1.08] mb-6">
+                            VIVRE L'ESPORT <br class="hidden sm:inline">
+                            <span class="text-gradient-ow">INTENSÉMENT</span>
+                        </h1>
 
-                <!-- Subtitle -->
-                <p class="text-slate-300 text-lg sm:text-xl font-normal leading-relaxed mb-8">
-                    Bienvenue chez <strong class="text-white">GeekingTime (GETI)</strong>. Notre mission est de rassembler les passionnés d'Overwatch 2 autour de moments intenses en émotions, où chacun trouve sa place pour progresser et se dépasser.
-                </p>
+                        <!-- Subtitle -->
+                        <p class="text-slate-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                            Bienvenue chez <strong class="text-white font-semibold">GeekingTime (GETI)</strong>. Nous fédérons les passionnés d'<span class="text-brand-owOrange font-semibold">Overwatch 2</span> autour d'expériences compétitives intenses, d'entraide et de moments inoubliables où chaque joueur progresse à son rythme.
+                        </p>
 
-                <!-- Actions -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://discord.gg" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-owOrange to-brand-purple hover:from-orange-600 hover:to-purple-600 text-white font-bold text-base shadow-lg glow-orange transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3">
-                        <i class="fa-brands fa-discord text-xl"></i>
-                        <span>Rejoindre l'Aventure</span>
-                    </a>
-                    <a href="#vision" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-bold text-base border border-slate-700 transition-all duration-300 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-users text-brand-neonCyan"></i>
-                        <span>Découvrir Notre Esprit</span>
-                    </a>
-                </div>
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+                            <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-owOrange via-orange-500 to-brand-purple hover:from-orange-500 hover:to-purple-600 text-white font-bold text-base shadow-lg glow-orange transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-discord text-xl"></i>
+                                <span>Rejoindre la Communauté</span>
+                            </a>
+                            <a href="#tournois" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel hover:bg-white/10 text-white font-bold text-base border border-slate-700 hover:border-brand-owOrange/50 transition-all duration-300 flex items-center justify-center gap-2.5">
+                                <i class="fa-solid fa-trophy text-brand-amber"></i>
+                                <span>Découvrir nos Tournois</span>
+                            </a>
+                        </div>
 
-                <!-- Key Metrics -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-brand-border/60">
-                    <div class="p-4 glass-card rounded-2xl">
-                        <span class="block font-display font-black text-3xl sm:text-4xl text-white">3 500+</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Membres Discord</span>
+                        <!-- Key Metrics Bar -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 border-t border-brand-border/80">
+                            <div class="p-3.5 glass-panel rounded-xl text-left border-l-2 border-l-brand-owOrange">
+                                <span class="block font-display font-black text-2xl sm:text-3xl text-white">3 500+</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Membres Discord</span>
+                            </div>
+                            <div class="p-3.5 glass-panel rounded-xl text-left border-l-2 border-l-brand-purple">
+                                <span class="block font-display font-black text-2xl sm:text-3xl text-brand-purple">100%</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Overwatch 2</span>
+                            </div>
+                            <div class="p-3.5 glass-panel rounded-xl text-left border-l-2 border-l-brand-amber">
+                                <span class="block font-display font-black text-2xl sm:text-3xl text-brand-amber">HEBDO</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">PUGs & Matchs</span>
+                            </div>
+                            <div class="p-3.5 glass-panel rounded-xl text-left border-l-2 border-l-brand-neonCyan">
+                                <span class="block font-display font-black text-2xl sm:text-3xl text-brand-neonCyan">TOUS</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Niveaux & Rôles</span>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="p-4 glass-card rounded-2xl">
-                        <span class="block font-display font-black text-3xl sm:text-4xl text-brand-owOrange">100%</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Overwatch 2</span>
+
+                    <!-- Right Hero Visual: Pure Glowing Emblem Showcase (5 cols) -->
+                    <div class="lg:col-span-5 flex items-center justify-center relative min-h-[380px] lg:min-h-[480px]">
+                        
+                        <!-- Ambient Multi-layer Glow & Energy Halo -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <!-- Deep radial bloom glow -->
+                            <div class="w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-tr from-brand-owOrange/30 via-orange-500/20 to-brand-purple/35 blur-[90px] animate-pulse-glow"></div>
+                            <!-- Orbital Ring 1: Tech Orange Accent -->
+                            <div class="absolute w-72 sm:w-88 md:w-[380px] h-72 sm:h-88 md:h-[380px] rounded-full border border-brand-owOrange/25 animate-spin-slow"></div>
+                            <!-- Orbital Ring 2: Dashed Violet Accent -->
+                            <div class="absolute w-84 sm:w-[420px] md:w-[460px] h-84 sm:h-[420px] md:h-[460px] rounded-full border border-dashed border-brand-purple/30 animate-spin-slow" style="animation-direction: reverse; animation-duration: 26s;"></div>
+                        </div>
+
+                        <!-- Floating GETI Emblem Display -->
+                        <div class="relative z-10 flex items-center justify-center group select-none">
+                            <img 
+                                src="asset/logo-transparent.png" 
+                                alt="Blason Officiel GeekingTime" 
+                                class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain drop-shadow-[0_20px_50px_rgba(255,107,0,0.4)] drop-shadow-[0_0_35px_rgba(124,58,237,0.3)] animate-float transform transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-1"
+                            >
+                        </div>
+
                     </div>
-                    <div class="p-4 glass-card rounded-2xl">
-                        <span class="block font-display font-black text-3xl sm:text-4xl text-brand-purple">⚡</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Émotions Fortes</span>
-                    </div>
-                    <div class="p-4 glass-card rounded-2xl">
-                        <span class="block font-display font-black text-3xl sm:text-4xl text-brand-neonCyan">📈</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Entraide & Progrès</span>
-                    </div>
+
                 </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Vision & Values Section -->
-    <section id="vision" class="py-20 bg-slate-950/60 relative border-y border-brand-border/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-owOrange font-mono text-sm uppercase tracking-widest font-semibold">// Nos Valeurs</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
-                    L'ESPORT COMMENCE PAR <span class="text-gradient">L'HUMAIN</span>
-                </h2>
-                <p class="text-slate-300 mt-4 text-base">
-                    Au-delà de la compétition, nous croyons au pouvoir du jeu vidéo pour créer du lien, véhiculer des émotions intenses et faire grandir chaque joueur.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Vision & Values Section -->
+        <section id="vision" class="py-24 bg-slate-950/70 relative border-y border-brand-border/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Pillar 1 -->
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-3xl mb-6 border border-brand-owOrange/30">
-                            <i class="fa-solid fa-fire"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3">Ressentir des Émotions</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            L'esport vibre à travers la passion. Que ce soit sur un clutch décisif, un comeback inattendu ou un match serré, nous créons un cadre où chaque partie devient un souvenir fort.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-border/60 text-xs font-mono text-brand-owOrange font-semibold uppercase">
-                        #Intensité #Partage
-                    </div>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/20 text-brand-purple flex items-center justify-center text-3xl mb-6 border border-brand-purple/30">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3">Progresser Ensemble</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Quel que soit votre niveau actuel sur Overwatch 2, personne ne reste de côté. L'échange d'expériences et les conseils collectifs permettent à chacun de s'améliorer continuellement.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-border/60 text-xs font-mono text-brand-purple font-semibold uppercase">
-                        #Coaching #NiveauSupérieur
-                    </div>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-neonCyan/20 text-brand-neonCyan flex items-center justify-center text-3xl mb-6 border border-brand-neonCyan/30">
-                            <i class="fa-solid fa-people-group"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3">Rassembler la Communauté</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Créer un lieu d'accueil sain, amical et passionné pour tous les joueurs d'Overwatch 2. Tisser des liens durables et former des équipes solides qui durent dans le temps.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-brand-border/60 text-xs font-mono text-brand-neonCyan font-semibold uppercase">
-                        #EspritDécurie #Bienveillance
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Tournaments Teaser Section -->
-    <section id="tournois" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-owOrange font-mono text-sm uppercase tracking-widest font-semibold">// Compétitions En Ligne</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
-                    PROCHAINS <span class="text-gradient">TOURNOIS OW2</span>
-                </h2>
-            </div>
-
-            <!-- Big Teaser Box -->
-            <div class="glass-card rounded-3xl p-8 md:p-12 border border-brand-owOrange/30 relative overflow-hidden text-center max-w-4xl mx-auto shadow-2xl">
-                <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-owOrange/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="relative z-10">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-3xl mx-auto mb-6 animate-pulse-slow border border-brand-owOrange/40">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-
-                    <h3 class="text-2xl sm:text-4xl font-display font-black text-white mb-4">
-                        ÉDITIONS COMPÉTITIVES EN PRÉPARATION 🛠️
-                    </h3>
-
-                    <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Nos équipes préparent actuellement les prochains tournois Overwatch 2 en ligne. Des événements pensés pour vivre du grand spectacle, célébrer le beau jeu et faire vibrer la communauté !
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-owOrange font-mono text-xs uppercase tracking-widest font-bold">// Valeurs Fondatrices</span>
+                    <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
+                        L'ESPORT COMMENCE PAR <span class="text-gradient-ow">L'HUMAIN</span>
+                    </h2>
+                    <p class="text-slate-300 mt-4 text-base leading-relaxed">
+                        Au-delà du classement et de la compétition, GeekingTime est né d'une conviction : le jeu vidéo est le plus beau catalyseur de liens humains, de dépassement de soi et de souvenirs inoubliables.
                     </p>
+                </div>
 
-                    <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://discord.gg" target="_blank" class="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition-all shadow-lg glow-purple flex items-center gap-3">
-                            <i class="fa-brands fa-discord text-lg"></i>
-                            <span>Être informé sur Discord</span>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Pillar 1 : Émotions -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-brand-border flex flex-col justify-between relative overflow-hidden group">
+                        <div class="absolute -top-16 -right-16 w-32 h-32 bg-brand-owOrange/10 rounded-full blur-2xl group-hover:bg-brand-owOrange/25 transition-all"></div>
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-owOrange/15 text-brand-owOrange flex items-center justify-center text-2xl mb-6 border border-brand-owOrange/30 shadow-lg shadow-orange-950/30">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-brand-owOrange transition-colors">Vibrer & Ressentir</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                L'esport prend tout son sens dans l'adrénaline. Un overtime à couper le souffle, une ultime coordonnée au millimètre ou un comeback légendaire : nous créons le cadre pour revivre ces frissons à chaque session.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs font-mono text-brand-owOrange font-semibold uppercase">
+                            <span>#Intensité</span>
+                            <span>#Partage</span>
+                            <span>#Overtime</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 : Progression -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-brand-border flex flex-col justify-between relative overflow-hidden group">
+                        <div class="absolute -top-16 -right-16 w-32 h-32 bg-brand-purple/10 rounded-full blur-2xl group-hover:bg-brand-purple/25 transition-all"></div>
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-purple/15 text-brand-purple flex items-center justify-center text-2xl mb-6 border border-brand-purple/30 shadow-lg shadow-purple-950/30">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">Progresser Ensemble</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Quel que soit votre rang compétitif — de Bronze à Top 500 —, personne n'est laissé de côté. Grâce aux revues de replays (VOD review), aux conseils d'anciens et aux retours bienveillants, chacun franchit un cap.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs font-mono text-brand-purple font-semibold uppercase">
+                            <span>#Coaching</span>
+                            <span>#VODReview</span>
+                            <span>#NiveauSupérieur</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 : Fédérer -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-brand-border flex flex-col justify-between relative overflow-hidden group">
+                        <div class="absolute -top-16 -right-16 w-32 h-32 bg-brand-neonCyan/10 rounded-full blur-2xl group-hover:bg-brand-neonCyan/25 transition-all"></div>
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-neonCyan/15 text-brand-neonCyan flex items-center justify-center text-2xl mb-6 border border-brand-neonCyan/30 shadow-lg shadow-cyan-950/30">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-brand-neonCyan transition-colors">Fédérer la Communauté</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Construire un lieu d'accueil sain, respectueux et chaleureux. Vous trouverez des coéquipiers sérieux pour monter en Ranked, monter une équipe pour nos tournois ou simplement passer de bonnes soirées vocales.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs font-mono text-brand-neonCyan font-semibold uppercase">
+                            <span>#Bienveillance</span>
+                            <span>#ÉquipeDurable</span>
+                            <span>#EspritClub</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tournaments Teaser Section -->
+        <section id="tournois" class="py-24 relative bg-slate-950/60 border-t border-brand-border/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-brand-owOrange font-mono text-xs uppercase tracking-widest font-bold">// Compétitions & Événements</span>
+                    <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
+                        PROCHAINS <span class="text-gradient-ow">TOURNOIS OW2</span>
+                    </h2>
+                    <p class="text-slate-300 mt-4 text-base">
+                        L'adrénaline des matchs officiels, le cast en direct et la gloire du podium. Les inscriptions pour les futures éditions approchent !
+                    </p>
+                </div>
+
+                <!-- Big Teaser Box -->
+                <div class="glass-panel rounded-3xl p-8 md:p-14 border border-brand-owOrange/30 relative overflow-hidden text-center max-w-4xl mx-auto shadow-2xl shadow-black/80">
+                    <div class="absolute -top-24 -right-24 w-72 h-72 bg-brand-owOrange/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 rounded-2xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-3xl mx-auto mb-6 animate-pulse-slow border border-brand-owOrange/40 shadow-lg shadow-orange-950/40">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-slate-300 mb-4">
+                            <i class="fa-solid fa-gear fa-spin text-brand-amber"></i> En cours de finalisation
+                        </div>
+
+                        <h3 class="text-2xl sm:text-4xl font-display font-black text-white mb-4">
+                            ÉDITIONS COMPÉTITIVES EN PRÉPARATION
+                        </h3>
+
+                        <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                            Le staff GeekingTime affine les formats des prochains tournois Overwatch 2. Au programme : formats 5v5 classiques, tournois à handicap pour mixer les rangs, et cast en direct sur Twitch !
+                        </p>
+
+                        <!-- Highlights -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-left max-w-2xl mx-auto">
+                            <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 flex items-center gap-3">
+                                <i class="fa-solid fa-microphone text-brand-owOrange text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Cast Twitch</h5>
+                                    <p class="text-[11px] text-slate-400">Matchs commentés en live</p>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 flex items-center gap-3">
+                                <i class="fa-solid fa-award text-brand-amber text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Récompenses</h5>
+                                    <p class="text-[11px] text-slate-400">Rôles exclusifs & lots</p>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 flex items-center gap-3">
+                                <i class="fa-solid fa-scale-balanced text-brand-purple text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Équilibrage</h5>
+                                    <p class="text-[11px] text-slate-400">Système de MMR juste</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm transition-all shadow-lg glow-purple flex items-center gap-3">
+                                <i class="fa-brands fa-discord text-lg"></i>
+                                <span>Être alerté du lancement des inscriptions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Community & Discord Hub Showcase -->
+        <section id="communaute" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-purple font-mono text-xs uppercase tracking-widest font-bold">// Notre QG Quotidien</span>
+                    <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
+                        REJOIGNEZ <span class="text-gradient-ow">3 500 PASSIONNÉS</span>
+                    </h2>
+                    <p class="text-slate-300 mt-4 text-base leading-relaxed">
+                        Le Discord GeekingTime est le cœur battant de notre structure : discussions méta, recherche d'escouades en direct, réseau de recrutement GETIBOT et partage de clips.
+                    </p>
+                </div>
+
+                <!-- Realistic Discord Server Widget Preview -->
+                <div class="max-w-4xl mx-auto glass-panel rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-black/80 mb-16">
+                    
+                    <!-- Discord Server Banner / Header -->
+                    <div class="relative bg-gradient-to-r from-purple-900/60 via-slate-900/80 to-orange-950/60 px-6 sm:px-8 py-8 border-b border-white/10 flex flex-col sm:flex-row items-center sm:items-end justify-between gap-6">
+                        
+                        <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                            <!-- Official Violet Logo as Server Icon -->
+                            <div class="relative">
+                                <img 
+                                    src="asset/logo-violet.jpg" 
+                                    alt="Avatar Serveur GeekingTime" 
+                                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl shadow-2xl border-2 border-brand-purple/60 object-cover"
+                                >
+                                <span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-[10px] text-white shadow-md" title="En Ligne">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                                    <h3 class="text-xl sm:text-2xl font-bold font-display text-white">GeekingTime (GETI)</h3>
+                                    <span class="text-indigo-400 text-sm" title="Serveur Certifié E-sport"><i class="fa-solid fa-circle-check"></i></span>
+                                </div>
+                                <p class="text-xs text-slate-300 mb-2">Communauté e-sport 100% en ligne • Overwatch 2 FR</p>
+                                <div class="flex items-center justify-center sm:justify-start gap-4 text-xs font-mono">
+                                    <span class="inline-flex items-center gap-1.5 text-emerald-400">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        1 120 En ligne
+                                    </span>
+                                    <span class="text-slate-500">•</span>
+                                    <span class="text-slate-400">3 520 Membres</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg glow-purple transition-all">
+                            <i class="fa-brands fa-discord text-base"></i>
+                            <span>Rejoindre le Serveur</span>
                         </a>
+
+                    </div>
+
+                    <!-- Discord Channels Simulation -->
+                    <div class="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-slate-950/40">
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-owOrange font-bold font-mono">#</span>
+                            <span class="font-medium">📌-annonces-tournois</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-owOrange font-bold font-mono">#</span>
+                            <span class="font-medium">🤝-recherche-joueurs</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-purple font-bold font-mono">#</span>
+                            <span class="font-medium">🎬-clips-et-potg</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-purple-400 font-bold"><i class="fa-solid fa-robot text-xs"></i></span>
+                            <span class="font-medium">🤖-getibot-annonces</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 3 Pillars of Community -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-users-viewfinder"></i>
+                            </div>
+                            <h4 class="text-xl font-display font-bold text-white mb-3">Recherche de Joueurs & Duos</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">Des salons organisés par rôles et par rangs pour former des compositions d'équipes solides et en finir avec la solo-queue aléatoire.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">Tank</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">DPS</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">Support</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-brand-purple/20 text-purple-300 border border-brand-purple/40">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    +100 Serveurs Partenaires
+                                </span>
+                            </div>
+                            <h4 class="text-xl font-display font-bold text-white mb-3 flex items-center gap-2">
+                                GETIBOT <span class="text-xs font-mono font-medium px-2 py-0.5 rounded bg-brand-purple/20 text-purple-200 border border-brand-purple/30">Bot Discord</span>
+                            </h4>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                Bot Discord exclusif interconnecté à plus de <strong class="text-white font-semibold">100 serveurs partenaires</strong> pour simplifier la mise en relation et le recrutement de joueurs, de teams et de staff.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">🎯 Joueurs</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">🛡️ Teams</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">👔 Staff</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-neonCyan/20 text-brand-neonCyan flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-clapperboard"></i>
+                            </div>
+                            <h4 class="text-xl font-display font-bold text-white mb-3">Partage de Clips & Débats Méta</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">Exposez vos meilleures Actions de la Partie (POTG), vos clutchs insolites et échangez autour des dernières mises à jour et de l'équilibrage du jeu.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-cyan-300 font-medium">🎬 POTG & Clips</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-cyan-300 font-medium">💬 Débats Patch</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- Community & Discord Hub -->
-    <section id="communaute" class="py-20 relative bg-slate-950/40 border-t border-brand-border/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-purple font-mono text-sm uppercase tracking-widest font-semibold">// Notre Discord</span>
-                <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
-                    REJOIGNEZ <span class="text-gradient">3 500 PASSIONNÉS</span>
-                </h2>
-                <p class="text-slate-300 mt-4 text-base">
-                    Un espace d'échange actif au quotidien pour trouver vos coéquipiers, partager vos meilleurs mooves et progresser ensemble dans une ambiance survoltée.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-users-viewfinder"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-3">Recherche d'Équipe & Duo</h3>
-                    <p class="text-slate-400 text-sm">Des salons organisés par rôle pour construire des compositions équilibrées et jouer dans les meilleures conditions.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-handshake-angle"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-3">Entraide & Analyse VOD</h3>
-                    <p class="text-slate-400 text-sm">Partagez vos replays, discutez des compositions d'équipe et profitez des retours de la communauté pour franchir des paliers.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl border border-brand-border hover-glow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-neonCyan/20 text-brand-neonCyan flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-3">Matchs d'Exhibition & PUGs</h3>
-                    <p class="text-slate-400 text-sm">Des soirées de matchs amicaux internes (Pick-Up Games) pour tester de nouvelles tactiques sans la pression du classement.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-brand-border py-12 text-slate-400 text-sm">
+    <footer class="bg-brand-dark border-t border-brand-border/80 pt-16 pb-12 text-slate-400 text-sm relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                 
-                <!-- Col 1 -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-owOrange to-brand-purple flex items-center justify-center font-display font-black text-white text-base">
-                            G
-                        </div>
-                        <span class="font-display font-bold text-white text-lg">GEEKINGTIME</span>
+                <!-- Col 1: Brand Info with Transparent Logo -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <img 
+                            src="asset/logo-transparent.png" 
+                            alt="Logo GeekingTime GETI" 
+                            class="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)]"
+                        >
+                        <span class="font-display font-black text-white text-lg tracking-wide">
+                            GEEKING<span class="text-brand-owOrange">TIME</span>
+                        </span>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        Association e-sport 100% en ligne dédiée à Overwatch 2. Émotions, compétition et progression collective.
+                        Association e-sport 100% en ligne dédiée à l'écosystème Overwatch 2. Émotions, compétition collective et entraide pour tous les passionnés.
                     </p>
+                    <div class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] font-mono text-slate-400">
+                        RNA : W452018238 • Loi 1901
+                    </div>
                 </div>
 
-                <!-- Col 2 -->
+                <!-- Col 2: Navigation -->
                 <div>
-                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4">Navigation</h4>
-                    <ul class="space-y-2 text-xs">
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-owOrange pl-2">Navigation</h4>
+                    <ul class="space-y-2.5 text-xs">
                         <li><a href="#accueil" class="hover:text-white transition-colors">Accueil</a></li>
-                        <li><a href="#vision" class="hover:text-white transition-colors">Notre Vision</a></li>
+                        <li><a href="#vision" class="hover:text-white transition-colors">Notre Vision & Valeurs</a></li>
                         <li><a href="#tournois" class="hover:text-white transition-colors">Tournois OW2</a></li>
                         <li><a href="#communaute" class="hover:text-white transition-colors">Communauté Discord</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3 -->
+                <!-- Col 3: Esprit GETI -->
                 <div>
-                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4">Esprit GETI</h4>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex items-center gap-2 text-brand-owOrange font-semibold"><i class="fa-solid fa-check"></i> Overwatch 2</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-heart"></i> Passion & Émotions</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-bolt"></i> Progression pour tous</li>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-purple pl-2">Esprit GETI</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li class="flex items-center gap-2 text-brand-owOrange font-semibold"><i class="fa-solid fa-crosshairs"></i> Overwatch 2 Exclusif</li>
+                        <li class="flex items-center gap-2 text-slate-300"><i class="fa-solid fa-heart text-red-500"></i> Passion & Émotions</li>
+                        <li class="flex items-center gap-2 text-slate-300"><i class="fa-solid fa-bolt text-brand-amber"></i> Progression collective</li>
+                        <li class="flex items-center gap-2 text-slate-300"><i class="fa-solid fa-users text-brand-neonCyan"></i> Esprit de club bienveillant</li>
                     </ul>
                 </div>
 
-                <!-- Col 4 -->
+                <!-- Col 4: Réseaux & Contact -->
                 <div>
-                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4">Réseaux</h4>
-                    <div class="flex gap-3">
-                        <a href="https://discord.gg" target="_blank" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white hover:bg-indigo-600 transition-all">
-                            <i class="fa-brands fa-discord"></i>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-amber pl-2">Rejoindre l'Aventure</h4>
+                    <p class="text-xs text-slate-400 mb-4">Connectez-vous à nos réseaux pour ne rien rater des futures annonces et tournois :</p>
+                    <div class="flex gap-2.5">
+                        <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-indigo-600 transition-all" title="Discord GeekingTime">
+                            <i class="fa-brands fa-discord text-base"></i>
                         </a>
-                        <a href="https://twitter.com" target="_blank" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white hover:bg-cyan-500 transition-all">
-                            <i class="fa-brands fa-x-twitter"></i>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-black transition-all" title="Twitter / X">
+                            <i class="fa-brands fa-x-twitter text-base"></i>
                         </a>
-                        <a href="https://twitch.tv" target="_blank" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white hover:bg-purple-600 transition-all">
-                            <i class="fa-brands fa-twitch"></i>
+                        <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-purple-600 transition-all" title="Twitch Live">
+                            <i class="fa-brands fa-twitch text-base"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 transition-all" title="YouTube">
+                            <i class="fa-brands fa-youtube text-base"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
 
-            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-                <p>&copy; 2026 GeekingTime (GETI) - Communauté Overwatch 2.</p>
-                <p class="mt-2 sm:mt-0">100% En Ligne</p>
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+                <p>&copy; 2026 GeekingTime (GETI) - Communauté E-sport Overwatch 2 <span class="text-slate-400">(Association loi 1901 - RNA : W452018238)</span></p>
+                <div class="flex items-center gap-4">
+                    <span class="inline-flex items-center gap-1.5 text-slate-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 100% En Ligne
+                    </span>
+                    <span>•</span>
+                    <a href="#accueil" class="text-brand-owOrange hover:underline">Haut de page <i class="fa-solid fa-arrow-up ml-1"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script>
         // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
 
         mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            if (isHidden) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
         });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Navbar blur enhancement on scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                header.classList.add('bg-brand-dark/90', 'shadow-xl', 'shadow-black/50');
+                header.classList.remove('bg-brand-dark/70');
+            } else {
+                header.classList.add('bg-brand-dark/70');
+                header.classList.remove('bg-brand-dark/90', 'shadow-xl', 'shadow-black/50');
+            }
+        });
+
+        // Copy Discord Invite with Toast Notification
+        function copyDiscordInvite() {
+            const discordLink = "https://discord.gg/6eb7ABY";
+            navigator.clipboard.writeText(discordLink).then(() => {
+                showToast("Lien copié !", "L'invitation Discord a été copiée dans votre presse-papier.");
+            }).catch(() => {
+                showToast("Discord GETI", "Rejoignez-nous directement sur discord.gg/6eb7ABY");
+            });
+        }
+
+        // Show Toast function
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            const titleElem = document.getElementById('toast-title');
+            const msgElem = document.getElementById('toast-message');
+
+            titleElem.textContent = title;
+            msgElem.textContent = message;
+
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
     </script>
 </body>
 </html>
