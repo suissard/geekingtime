@@ -6,7 +6,7 @@
     <title>GeekingTime (GETI) - Communauté & E-sport Overwatch 2</title>
     
     <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Rejoignez GeekingTime (GETI), la communauté e-sport française dédiée à Overwatch 2. Tournois, entraide, coaching, PUGs et émotions fortes avec plus de 3 500 passionnés.">
+    <meta name="description" content="GeekingTime (GETI) – Communauté e-sport française Overwatch 2 : tournois, entraide, coaching et PUGs avec plus de 3 500 passionnés.">
     <meta name="keywords" content="Overwatch 2, E-sport, GeekingTime, GETI, Tournois Overwatch, Discord Overwatch 2, PUGs, Scrims OW2, France">
     <meta name="author" content="GeekingTime (GETI)">
 
@@ -26,10 +26,12 @@
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/png" href="asset/logo-transparent.png">
     <link rel="apple-touch-icon" href="asset/logo-violet.jpg">
+    <link rel="canonical" href="https://geekingtime.fr/">
+    <link rel="manifest" href="site.webmanifest">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- CSS compilé (Tailwind v4 build local, asset/output.css) -->
+    <link rel="stylesheet" href="asset/output.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,47 +39,6 @@
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#07090E',
-                            card: '#0F121C',
-                            border: '#202637',
-                            owOrange: '#FF6B00',
-                            owOrangeLight: '#FF8A26',
-                            amber: '#FBB03B',
-                            purple: '#7C3AED',
-                            purpleGlow: '#9333EA',
-                            neonCyan: '#06B6D4',
-                        }
-                    },
-                    fontFamily: {
-                        display: ['Orbitron', 'Syne', 'sans-serif'],
-                        body: ['Inter', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 5s ease-in-out infinite',
-                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-                        'spin-slow': 'spin 20s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-                            '50%': { opacity: '0.8', transform: 'scale(1.08)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
         :root {
@@ -91,106 +52,15 @@
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #07090E;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #202637;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FF6B00;
-        }
-
-        /* Tech Cyber Grid Background */
-        .bg-cyber-grid {
-            background-size: 48px 48px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-        }
-
-        /* Ambient Glow Shadows */
-        .glow-orange {
-            box-shadow: 0 0 35px -5px rgba(255, 107, 0, 0.45);
-        }
-
-        .glow-purple {
-            box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.45);
-        }
-
-        .glow-cyan {
-            box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.35);
-        }
-
-        .glass-panel {
-            background: rgba(15, 18, 28, 0.72);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .glass-panel-hover {
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-panel-hover:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 107, 0, 0.4);
-            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 24px 2px rgba(255, 107, 0, 0.15);
-        }
-
-        /* Text Gradients */
-        .text-gradient-ow {
-            background: linear-gradient(135deg, #FF6B00 0%, #FBB03B 50%, #C084FC 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .text-gradient-purple {
-            background: linear-gradient(135deg, #A855F7 0%, #6366F1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Button Shine Effect */
-        .btn-shine {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                60deg,
-                transparent,
-                rgba(255, 255, 255, 0.15),
-                transparent
-            );
-            transform: rotate(30deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-        .btn-shine:hover::after {
-            opacity: 1;
-            left: 100%;
-        }
-
-
-        /* Radial Vignette */
-        .radial-vignette {
-            background: radial-gradient(circle at 50% 30%, transparent 20%, #07090E 90%);
+        /* Accessibilité : indicateur de focus clavier */
+        :focus-visible {
+            outline: 2px solid #FF6B00;
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body class="bg-cyber-grid antialiased selection:bg-brand-owOrange selection:text-white">
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-owOrange focus:text-black focus:font-bold focus:rounded">Aller au contenu principal</a>
 
     <!-- Ambient Gradient Backdrops -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -224,6 +94,8 @@
                         <img 
                             src="asset/logo-transparent.png" 
                             alt="Logo GeekingTime GETI" 
+                            width="44" height="44"
+                            loading="lazy" decoding="async"
                             class="relative w-11 h-11 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)] group-hover:scale-105 transition-transform duration-300"
                         >
                     </div>
@@ -249,7 +121,7 @@
 
                 <!-- Discord CTA Button -->
                 <div class="hidden md:flex items-center gap-3">
-                    <button onclick="copyDiscordInvite()" class="px-3 py-2 rounded-xl glass-panel text-slate-400 hover:text-white hover:border-brand-owOrange/40 text-xs font-semibold transition-all" title="Copier le lien d'invitation Discord">
+                    <button class="px-3 py-2 rounded-xl glass-panel text-slate-400 hover:text-white hover:border-brand-owOrange/40 text-xs font-semibold transition-all" title="Copier le lien d'invitation Discord" id="copy-discord-desktop">
                         <i class="fa-solid fa-copy"></i>
                     </button>
                     <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-white text-sm transition-all duration-300 glow-purple hover:scale-[1.02]">
@@ -281,14 +153,14 @@
                     <i class="fa-brands fa-discord text-lg"></i>
                     <span>Rejoindre le Discord (3 500+ membres)</span>
                 </a>
-                <button onclick="copyDiscordInvite()" class="w-full py-2.5 rounded-xl glass-panel text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                <button class="w-full py-2.5 rounded-xl glass-panel text-slate-300 text-xs font-semibold flex items-center justify-center gap-2" id="copy-discord-mobile">
                     <i class="fa-solid fa-copy text-brand-owOrange"></i> Copier l'invitation Discord
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10">
+    <main class="relative z-10" id="main-content">
 
         <!-- Hero Section -->
         <section id="accueil" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
@@ -371,6 +243,8 @@
                             <img 
                                 src="asset/logo-transparent.png" 
                                 alt="Blason Officiel GeekingTime" 
+                                width="256" height="256"
+                                loading="eager" decoding="async"
                                 class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain drop-shadow-[0_20px_50px_rgba(255,107,0,0.4)] drop-shadow-[0_0_35px_rgba(124,58,237,0.3)] animate-float transform transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-1"
                             >
                         </div>
@@ -559,6 +433,8 @@
                                 <img 
                                     src="asset/logo-violet.jpg" 
                                     alt="Avatar Serveur GeekingTime" 
+                                    width="80" height="80"
+                                    loading="lazy" decoding="async"
                                     class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl shadow-2xl border-2 border-brand-purple/60 object-cover"
                                 >
                                 <span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-[10px] text-white shadow-md" title="En Ligne">
@@ -685,6 +561,8 @@
                         <img 
                             src="asset/logo-transparent.png" 
                             alt="Logo GeekingTime GETI" 
+                            width="36" height="36"
+                            loading="lazy" decoding="async"
                             class="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)]"
                         >
                         <span class="font-display font-black text-white text-lg tracking-wide">
@@ -726,17 +604,17 @@
                     <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-amber pl-2">Rejoindre l'Aventure</h4>
                     <p class="text-xs text-slate-400 mb-4">Connectez-vous à nos réseaux pour ne rien rater des futures annonces et tournois :</p>
                     <div class="flex gap-2.5">
-                        <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-indigo-600 transition-all" title="Discord GeekingTime">
-                            <i class="fa-brands fa-discord text-base"></i>
+                        <a href="https://discord.gg/6eb7ABY" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-indigo-600 transition-all" title="Discord GeekingTime" aria-label="Discord GeekingTime">
+                            <i class="fa-brands fa-discord text-base" aria-hidden="true"></i>
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-black transition-all" title="Twitter / X">
-                            <i class="fa-brands fa-x-twitter text-base"></i>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-black transition-all" title="Twitter / X" aria-label="Twitter / X">
+                            <i class="fa-brands fa-x-twitter text-base" aria-hidden="true"></i>
                         </a>
-                        <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-purple-600 transition-all" title="Twitch Live">
-                            <i class="fa-brands fa-twitch text-base"></i>
+                        <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-purple-600 transition-all" title="Twitch Live" aria-label="Twitch Live">
+                            <i class="fa-brands fa-twitch text-base" aria-hidden="true"></i>
                         </a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 transition-all" title="YouTube">
-                            <i class="fa-brands fa-youtube text-base"></i>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:bg-red-600 transition-all" title="YouTube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube text-base" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -823,6 +701,41 @@
                 toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
             }, 3500);
         }
+
+        // Attacher les listeners "copier Discord" (sans onclick en ligne)
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnDesktop = document.getElementById('copy-discord-desktop');
+            const btnMobile = document.getElementById('copy-discord-mobile');
+            if (btnDesktop) btnDesktop.addEventListener('click', copyDiscordInvite);
+            if (btnMobile) btnMobile.addEventListener('click', copyDiscordInvite);
+        });
+    </script>
+
+    <!-- Données structurées JSON-LD (SEO) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsOrganization",
+        "name": "GeekingTime (GETI)",
+        "url": "https://geekingtime.fr/",
+        "logo": "https://geekingtime.fr/asset/logo-transparent.png",
+        "slogan": "Vivre l'esport intensément - Communauté e-sport française Overwatch 2",
+        "description": "Communauté e-sport française dédiée à Overwatch 2. Tournois, entraide, coaching, PUGs et émotions fortes avec plus de 3 500 passionnés sur Discord.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": "Français"
+        },
+        "sameAs": [
+            "https://discord.gg/6eb7ABY"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+        },
+        "legalName": "GeekingTime",
+        "identifier": "W452018238"
+    }
     </script>
 </body>
 </html>

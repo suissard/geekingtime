@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand-dark: #07090E;
+    --color-brand-card: #0F121C;
+    --color-brand-border: #202637;
+    --color-brand-owOrange: #FF6B00;
+    --color-brand-owOrangeLight: #FF8A26;
+    --color-brand-amber: #FBB03B;
+    --color-brand-purple: #7C3AED;
+    --color-brand-purpleGlow: #9333EA;
+    --color-brand-neonCyan: #06B6D4;
+    --font-family-display: 'Orbitron', 'Syne', sans-serif;
+    --font-family-body: 'Inter', sans-serif;
+}
+
+/* Custom animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.08); }
+}
+.animate-float {
+    animation: float 5s ease-in-out infinite;
+}
+.animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+.animate-spin-slow {
+    animation: spin 20s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #07090E;
+}
+::-webkit-scrollbar-thumb {
+    background: #202637;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FF6B00;
+}
+
+/* Tech Cyber Grid Background */
+.bg-cyber-grid {
+    background-size: 48px 48px;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+/* Ambient Glow Shadows */
+.glow-orange {
+    box-shadow: 0 0 35px -5px rgba(255, 107, 0, 0.45);
+}
+.glow-purple {
+    box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.45);
+}
+.glow-cyan {
+    box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.35);
+}
+
+/* Glass panels */
+.glass-panel {
+    background: rgba(15, 18, 28, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.glass-panel-hover {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 0, 0.4);
+    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 24px 2px rgba(255, 107, 0, 0.15);
+}
+
+/* Text Gradients */
+.text-gradient-ow {
+    background: linear-gradient(135deg, #FF6B00 0%, #FBB03B 50%, #C084FC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-gradient-purple {
+    background: linear-gradient(135deg, #A855F7 0%, #6366F1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Button Shine Effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+.btn-shine:hover::after {
+    opacity: 1;
+    left: 100%;
+}
+
+/* Radial Vignette */
+.radial-vignette {
+    background: radial-gradient(circle at 50% 30%, transparent 20%, #07090E 90%);
+}
+
+/* Accessibilité : focus visible */
+:focus-visible {
+    outline: 2px solid #FF6B00;
+    outline-offset: 2px;
+}

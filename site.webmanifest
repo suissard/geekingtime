@@ -1,0 +1,15 @@
+{
+  "name": "GeekingTime (GETI)",
+  "short_name": "GETI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07090E",
+  "theme_color": "#FF6B00",
+  "icons": [
+    {
+      "src": "asset/logo-transparent.png",
+      "sizes": "1500x1500",
+      "type": "image/png"
+    }
+  ]
+}

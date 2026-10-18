@@ -1,0 +1,28 @@
+{
+  "name": "geekingtime",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Créé avec httpRequest depuis n8n",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suissard/geekingtime.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suissard/geekingtime/issues"
+  },
+  "homepage": "https://github.com/suissard/geekingtime#readme",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.30",
+    "postcss-cli": "^12.0.0",
+    "tailwindcss": "^4.3.3"
+  }
+}
