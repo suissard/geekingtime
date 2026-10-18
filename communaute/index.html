@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communauté Discord - GeekingTime (GETI)</title>
+
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="Le Discord GeekingTime : recherche de joueurs, GETIBOT, partage de clips et débats méta autour d'Overwatch 2.">
+    <meta name="author" content="GEEKING TIME (GETI)">
+    <link rel="canonical" href="https://geekingtime.fr/communaute/">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geekingtime.fr/communaute/">
+    <meta property="og:title" content="Communauté Discord - GeekingTime (GETI)">
+    <meta property="og:description" content="Le Discord GeekingTime : recherche de joueurs, GETIBOT, partage de clips et débats méta autour d'Overwatch 2.">
+    <meta property="og:image" content="https://geekingtime.fr/asset/logo-violet.jpg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Communauté Discord - GeekingTime (GETI)">
+    <meta name="twitter:description" content="Le Discord GeekingTime : recherche de joueurs, GETIBOT, partage de clips et débats méta autour d'Overwatch 2.">
+    <meta name="twitter:image" content="https://geekingtime.fr/asset/logo-violet.jpg">
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="/asset/logo-transparent.png">
+    <link rel="apple-touch-icon" href="/asset/logo-violet.jpg">
+
+    <!-- Tailwind CSS CDN + shared config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/asset/tailwind-config.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="/asset/style.css">
+</head>
+<body class="bg-cyber-grid antialiased selection:bg-brand-owOrange selection:text-white">
+
+    <!-- Ambient Gradient Backdrops -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-brand-owOrange/10 rounded-full blur-[140px] animate-pulse-glow"></div>
+        <div class="absolute top-[35%] -left-40 w-[600px] h-[600px] bg-brand-purple/15 rounded-full blur-[160px]"></div>
+        <div class="absolute top-[60%] -right-40 w-[600px] h-[600px] bg-brand-neonCyan/10 rounded-full blur-[160px]"></div>
+    </div>
+
+    <!-- Notification Toast (Hidden by default) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="flex items-center gap-3 px-5 py-3.5 rounded-xl glass-panel border border-brand-owOrange/40 bg-brand-card/95 text-white shadow-2xl shadow-black/80">
+            <div class="w-8 h-8 rounded-lg bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center font-bold">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-white" id="toast-title">Lien copié !</p>
+                <p class="text-[11px] text-slate-400" id="toast-message">L'invitation Discord est prête à être partagée.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-brand-dark/70 backdrop-blur-xl border-b border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo Official Transparent -->
+                <a href="/" class="flex items-center gap-3.5 group cursor-pointer" title="GeekingTime - Accueil">
+                    <div class="relative w-11 h-11 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-brand-owOrange/20 rounded-xl blur-md group-hover:bg-brand-owOrange/40 transition-all"></div>
+                        <img
+                            src="/asset/logo-transparent.png"
+                            alt="Logo GeekingTime GETI"
+                            class="relative w-11 h-11 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)] group-hover:scale-105 transition-transform duration-300"
+                        >
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black text-xl tracking-wider text-white group-hover:text-slate-100 transition-colors">
+                            GEEKING<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-owOrange to-brand-amber">TIME</span>
+                        </span>
+                        <div class="flex items-center gap-1.5 -mt-1">
+                            <span class="text-[10px] font-bold tracking-widest text-brand-purple">GETI</span>
+                            <span class="text-[10px] text-slate-500">•</span>
+                            <span class="text-[10px] font-semibold tracking-wider text-slate-400">ASSOCIATION ESPORT</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300" aria-label="Navigation principale">
+                    <a href="/" class="nav-link">Accueil</a>
+                    <a href="/association/" class="nav-link">L'association</a>
+                    <a href="/tournois/" class="nav-link">Tournois</a>
+                    <a href="/communaute/" class="nav-link is-active" aria-current="page">Communauté</a>
+                    <a href="/contact/" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Discord CTA Button -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="copyDiscordInvite()" class="px-3 py-2 rounded-xl glass-panel text-slate-400 hover:text-white hover:border-brand-owOrange/40 text-xs font-semibold transition-all" title="Copier le lien d'invitation Discord">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                    <a href="https://discord.com/invite/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-white text-sm transition-all duration-300 glow-purple hover:scale-[1.02]">
+                        <i class="fa-brands fa-discord text-lg"></i>
+                        <span>Rejoindre Discord</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Menu Mobile" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-t border-brand-border/80 px-4 pt-4 pb-6 space-y-1">
+            <a href="/" class="mobile-nav-link">Accueil</a>
+            <a href="/association/" class="mobile-nav-link">L'association</a>
+            <a href="/tournois/" class="mobile-nav-link">Tournois</a>
+            <a href="/communaute/" class="mobile-nav-link is-active" aria-current="page">Communauté</a>
+            <a href="/contact/" class="mobile-nav-link">Contact</a>
+
+            <div class="pt-4 flex flex-col gap-2">
+                <a href="https://discord.com/invite/6eb7ABY" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 text-white font-bold text-center glow-purple">
+                    <i class="fa-brands fa-discord text-lg"></i>
+                    <span>Rejoindre le Discord</span>
+                </a>
+                <button onclick="copyDiscordInvite()" class="w-full py-2.5 rounded-xl glass-panel text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-copy text-brand-owOrange"></i> Copier l'invitation Discord
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- Page Header -->
+        <section class="relative pt-36 pb-12 md:pt-44 md:pb-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-brand-purple font-mono text-xs uppercase tracking-widest font-bold">// Notre QG Quotidien</span>
+                <h1 class="text-3xl sm:text-5xl font-display font-black text-white mt-2">
+                    REJOIGNEZ <span class="text-gradient-ow">3 500 PASSIONNÉS</span>
+                </h1>
+                <p class="text-slate-300 mt-4 text-base sm:text-lg leading-relaxed">
+                    Le Discord GeekingTime est le cœur battant de notre association : discussions méta, recherche d'escouades en direct, réseau de recrutement GETIBOT et partage de clips.
+                </p>
+            </div>
+        </section>
+
+        <!-- Community & Discord Hub Showcase -->
+        <section class="pb-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Discord Server Preview -->
+                <div class="max-w-4xl mx-auto glass-panel rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-black/80 mb-16">
+
+                    <!-- Discord Server Banner / Header -->
+                    <div class="relative bg-gradient-to-r from-purple-900/60 via-slate-900/80 to-orange-950/60 px-6 sm:px-8 py-8 border-b border-white/10 flex flex-col sm:flex-row items-center sm:items-end justify-between gap-6">
+
+                        <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                            <!-- Official Violet Logo as Server Icon -->
+                            <img
+                                src="/asset/logo-violet.jpg"
+                                alt="Avatar Serveur GeekingTime"
+                                class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl shadow-2xl border-2 border-brand-purple/60 object-cover"
+                            >
+
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-bold font-display text-white mb-1">GeekingTime (GETI)</h2>
+                                <p class="text-xs text-slate-300 mb-2">Serveur officiel de l'association • Overwatch 2 FR</p>
+                                <p class="text-xs font-mono text-slate-400">3 500+ membres</p>
+                            </div>
+                        </div>
+
+                        <a href="https://discord.com/invite/6eb7ABY" target="_blank" rel="noopener noreferrer" class="btn-shine px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg glow-purple transition-all">
+                            <i class="fa-brands fa-discord text-base"></i>
+                            <span>Rejoindre le Serveur</span>
+                        </a>
+
+                    </div>
+
+                    <!-- Discord Channels Overview -->
+                    <div class="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-slate-950/40">
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-owOrange font-bold font-mono">#</span>
+                            <span class="font-medium">📌-annonces-tournois</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-owOrange font-bold font-mono">#</span>
+                            <span class="font-medium">🤝-recherche-joueurs</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-brand-purple font-bold font-mono">#</span>
+                            <span class="font-medium">🎬-clips-et-potg</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 flex items-center gap-2.5">
+                            <span class="text-purple-400 font-bold"><i class="fa-solid fa-robot text-xs"></i></span>
+                            <span class="font-medium">🤖-getibot-annonces</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 3 Pillars of Community -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-owOrange/20 text-brand-owOrange flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-users-viewfinder"></i>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-white mb-3">Recherche de Joueurs & Duos</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">Des salons organisés par rôles et par rangs pour former des compositions d'équipes solides et en finir avec la solo-queue aléatoire.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">Tank</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">DPS</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-orange-300 font-medium">Support</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-brand-purple/20 text-purple-300 border border-brand-purple/40">
+                                    +100 Serveurs Partenaires
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-white mb-3 flex items-center gap-2">
+                                GETIBOT <span class="text-xs font-mono font-medium px-2 py-0.5 rounded bg-brand-purple/20 text-purple-200 border border-brand-purple/30">Bot Discord</span>
+                            </h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                Bot Discord exclusif interconnecté à plus de <strong class="text-white font-semibold">100 serveurs partenaires</strong> pour simplifier la mise en relation et le recrutement de joueurs, de teams et de staff.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">🎯 Joueurs</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">🛡️ Teams</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-purple-300 font-medium">👔 Staff</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel glass-panel-hover p-8 rounded-2xl border border-brand-border transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-neonCyan/20 text-brand-neonCyan flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-clapperboard"></i>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-white mb-3">Partage de Clips & Débats Méta</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">Exposez vos meilleures Actions de la Partie (POTG), vos clutchs insolites et échangez autour des dernières mises à jour et de l'équilibrage du jeu.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 text-[11px] font-mono text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-cyan-300 font-medium">🎬 POTG & Clips</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-cyan-300 font-medium">💬 Débats Patch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram -->
+                <div class="mt-16 max-w-4xl mx-auto glass-panel rounded-3xl border border-brand-border p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 via-pink-600 to-purple-600 text-white flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-display font-bold text-white">Suivez-nous sur Instagram</h3>
+                            <p class="text-slate-400 text-sm">Annonces, résultats de tournois et coulisses de l'association.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/geeking_time" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl glass-panel hover:bg-white/10 text-white font-bold text-sm border border-slate-700 transition-all whitespace-nowrap">
+                        @geeking_time
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-brand-border/80 pt-16 pb-12 text-slate-400 text-sm relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+                <!-- Col 1: Brand Info with Transparent Logo -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img
+                            src="/asset/logo-transparent.png"
+                            alt="Logo GeekingTime GETI"
+                            class="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(255,107,0,0.5)]"
+                        >
+                        <span class="font-display font-black text-white text-lg tracking-wide">
+                            GEEKING<span class="text-brand-owOrange">TIME</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Association e-sport loi 1901 dédiée à l'écosystème Overwatch 2. Émotions, compétition collective et entraide pour tous les passionnés.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-owOrange pl-2">Navigation</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="/" class="hover:text-white transition-colors">Accueil</a></li>
+                        <li><a href="/association/" class="hover:text-white transition-colors">L'association</a></li>
+                        <li><a href="/tournois/" class="hover:text-white transition-colors">Tournois Overwatch 2</a></li>
+                        <li><a href="/communaute/" class="hover:text-white transition-colors">Communauté Discord</a></li>
+                        <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="/mentions-legales/" class="hover:text-white transition-colors">Mentions légales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Official Contact Details -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-purple pl-2">Coordonnées</h4>
+                    <address class="not-italic space-y-2.5 text-xs">
+                        <p class="text-white font-semibold">Association GEEKING TIME (GETI)</p>
+                        <p class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-owOrange w-3.5 mt-0.5"></i>
+                            <span>45400 Fleury-les-Aubrais<br>France</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-owOrange w-3.5"></i>
+                            <a href="mailto:contact@geekingtime.fr" class="hover:text-white transition-colors">contact@geekingtime.fr</a>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-id-card text-brand-owOrange w-3.5"></i>
+                            <span>RNA : W452018238</span>
+                        </p>
+                    </address>
+                </div>
+
+                <!-- Col 4: Join -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-xs uppercase tracking-wider mb-4 border-l-2 border-brand-amber pl-2">Rejoindre l'Aventure</h4>
+                    <p class="text-xs text-slate-400 mb-4">Suivez-nous pour ne rien rater des annonces de tournois, d'événements et de recrutement :</p>
+                    <div class="flex flex-wrap gap-2.5">
+                        <a href="https://discord.com/invite/6eb7ABY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 h-10 rounded-xl glass-panel text-slate-300 hover:text-white hover:bg-indigo-600 transition-all text-xs font-semibold" title="Discord GeekingTime">
+                            <i class="fa-brands fa-discord text-base"></i> Discord
+                        </a>
+                        <a href="https://www.instagram.com/geeking_time" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 h-10 rounded-xl glass-panel text-slate-300 hover:text-white hover:bg-pink-600 transition-all text-xs font-semibold" title="Instagram GeekingTime">
+                            <i class="fa-brands fa-instagram text-base"></i> Instagram
+                        </a>
+                        <button onclick="copyDiscordInvite()" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white transition-all" title="Copier le lien d'invitation Discord">
+                            <i class="fa-solid fa-copy text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+                <p>&copy; 2026 Association GEEKING TIME (GETI) <span class="text-slate-400">· Loi 1901 · RNA W452018238 · 45400 Fleury-les-Aubrais, France</span></p>
+                <div class="flex items-center gap-4">
+                    <a href="/mentions-legales/" class="hover:text-white transition-colors">Mentions légales</a>
+                    <span>•</span>
+                    <a href="#" class="text-brand-owOrange hover:underline">Haut de page <i class="fa-solid fa-arrow-up ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script src="/asset/main.js"></script>
+</body>
+</html>
